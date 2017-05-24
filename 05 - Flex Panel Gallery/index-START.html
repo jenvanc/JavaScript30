@@ -127,7 +127,15 @@
       this.classList.toggle('open');
     }
 
+    function toggleActive(e) {
+      if (e.propertyName.includes('flex')) {  //use .includes('flex') instead of === 'flex-grow' for transition end listener becuase of differences in naming in different browsers
+        this.classList.toggle('open-active');
+      }
+    }
+
     panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+
   </script>
 
 </body>
